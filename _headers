@@ -1,0 +1,5 @@
+# Cloudflare Pages: soubory pro vývojáře nemají být veřejně indexované
+/README.md
+  X-Robots-Tag: noindex
+/db/*
+  X-Robots-Tag: noindex
