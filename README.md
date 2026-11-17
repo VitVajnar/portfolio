@@ -1,6 +1,6 @@
 # Vajny — osobní portfolio
 
-**Živý web:** _doplň po nasazení, např. `https://vajny.pages.dev`_
+**Živý web:** https://vajny.pages.dev
 **Autor:** Vajny (Vít Vajnar), obor Informační technologie, 4. ročník, Praha
 **Předměty:** WWW (webové projekty), DIM (grafická a video tvorba)
 
@@ -80,7 +80,7 @@ Každý `git push` do větve `main` web automaticky znovu nasadí.
 **Proč tato data:** chci vědět, kolik lidí web vidí, odkud přišli (např. z Instagramu) a z jakých zařízení, abych mohl web ladit hlavně pro mobil.
 Nepoužívám žádné cookies ani osobní údaje, takže web nepotřebuje lištu se souhlasem.
 
-**Výpis logu:** `https://<adresa-webu>/api/visits?key=<STATS_KEY>&limit=5`
+**Výpis logu:** `https://vajny.pages.dev/api/visits?key=<STATS_KEY>&limit=5`
 Vrátí CSV s oddělovačem `;`. Bez správného klíče vrátí 404, takže logy nejsou veřejné.
 
 Ukázka výpisu (prvních 5 řádků):
