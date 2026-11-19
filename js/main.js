@@ -6,7 +6,7 @@
    ---------------------------------------------------------
    1. Opening intro + hero pop-in
    2. Mobile menu
-   3. Nav: active section + sliding pill
+   3. Nav: active page + sliding pill
    4. About statement (words light up)
    6. Scroll loop (all scroll-linked effects)
    7. Infinite reels — web + video (auto-move, drag, momentum)
@@ -82,13 +82,18 @@
   });
 
   /* ---------------------------------------------------------
-     3. Nav: active section + sliding pill
+     3. Nav: active page + sliding pill
+        Each page marks its own link with aria-current="page".
+        In-page links (#contact) light up while that part of the
+        page is on screen; otherwise the current page stays active.
      --------------------------------------------------------- */
   const navLinks = $$('.nav__link');
   const allLinks = [...navLinks, ...$$('.mobile-nav__link')];
   const pill = $('.nav__pill');
-  const sections = navLinks.map((l) => $(l.getAttribute('href'))).filter(Boolean);
-  let activeLink = null;
+  const isHash = (link) => link.getAttribute('href').startsWith('#');
+  const sections = navLinks.filter(isHash).map((l) => $(l.getAttribute('href'))).filter(Boolean);
+  let activeLink = $('.nav__link[aria-current="page"]');
+  let activeKey = 'page';
 
   const movePill = (link) => {
     if (!pill || !link || !link.offsetWidth) return;
@@ -97,12 +102,15 @@
     pill.style.setProperty('--o', 1);
   };
 
+  // id = an in-page section that is on screen, or null for "the current page"
   const setActive = (id) => {
     allLinks.forEach((link) => {
-      const on = link.getAttribute('href') === `#${id}`;
+      const on = id ? link.getAttribute('href') === `#${id}` : link.getAttribute('aria-current') === 'page';
       link.classList.toggle('is-active', on);
-      if (on) link.setAttribute('aria-current', 'location');
-      else link.removeAttribute('aria-current');
+      if (isHash(link)) {
+        if (on) link.setAttribute('aria-current', 'location');
+        else link.removeAttribute('aria-current');
+      }
       if (on && link.classList.contains('nav__link')) activeLink = link;
     });
     movePill(activeLink);
@@ -159,11 +167,11 @@
       words.forEach((w, i) => w.classList.toggle('is-lit', i < lit));
     }
 
-    // Active nav link
-    let activeId = sections[0]?.id;
+    // Active nav link: an in-page section once it reaches the upper part of the screen
+    let activeId = null;
     sections.forEach((s) => { if (s.getBoundingClientRect().top <= vh * 0.45) activeId = s.id; });
-    if (y >= max - 2) activeId = sections[sections.length - 1]?.id || activeId;
-    if (activeLink?.getAttribute('href') !== `#${activeId}`) setActive(activeId);
+    if (y >= max - 2 && sections.length) activeId = sections[sections.length - 1].id;
+    if ((activeId || 'page') !== activeKey) { activeKey = activeId || 'page'; setActive(activeId); }
 
     ticking = false;
   };
@@ -173,12 +181,12 @@
   };
   window.addEventListener('scroll', requestTick, { passive: true });
 
-  // Smooth return to top for every #home link
-  $$('a[href="#home"]').forEach((a) => a.addEventListener('click', (e) => {
+  // Smooth return to the top of the page for every #top link
+  $$('a[href="#top"]').forEach((a) => a.addEventListener('click', (e) => {
     e.preventDefault();
     window.scrollTo({ top: 0, behavior: reduceMotion() ? 'auto' : 'smooth' });
     $('.brand')?.focus({ preventScroll: true });
-    history.replaceState(null, '', '#home');
+    history.replaceState(null, '', location.pathname + location.search);
   }));
 
   /* ---------------------------------------------------------

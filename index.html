@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Vajny — Front-end Developer &amp; Graphic Designer from Prague</title>
-  <meta name="description" content="Vajny is an 18-year-old Information Technology student from Prague — a front-end developer and graphic designer making clean websites and video edits.">
+  <title>Vajny — Front-end Developer &amp; Video Editor from Prague</title>
+  <meta name="description" content="Vajny is an 18-year-old IT student from Prague — a front-end developer and video editor making clean websites and video edits.">
   <meta name="color-scheme" content="dark">
   <meta name="theme-color" content="#050a16">
 
   <meta property="og:title" content="Vajny — Portfolio">
-  <meta property="og:description" content="Front-end development and graphic design.">
+  <meta property="og:description" content="Vajny is an 18-year-old IT student from Prague — a front-end developer and video editor making clean websites and video edits.">
   <meta property="og:type" content="website">
 
   <!-- One typeface: Inter Tight -->
@@ -20,7 +20,7 @@
   <link rel="stylesheet" href="css/style.css">
   <script src="js/main.js" defer></script>
 </head>
-<body>
+<body id="top">
   <a class="skip-link" href="#main">Skip to content</a>
 
   <!-- Page atmosphere: drifting navy lights, an edge vignette and fine grain.
@@ -39,22 +39,22 @@
   </div>
 
   <!-- =====================================================
-       HEADER — floating frosted-glass navigation
+       HEADER — floating frosted-glass navigation (same on every page;
+       the current page is marked with aria-current="page")
        ===================================================== -->
   <header class="site-header">
     <div class="nav-shell">
-      <a class="brand" href="#home" aria-label="Vajny — back to top">
+      <a class="brand" href="#top" aria-label="Vajny — back to top">
         <span class="brand__mark" aria-hidden="true">V</span>
         <span class="brand__name">Vajny</span>
       </a>
 
       <nav class="nav" aria-label="Primary">
         <ul class="nav__list">
-          <li><a class="nav__link" href="#home">Home</a></li>
-          <li><a class="nav__link" href="#about">About</a></li>
-          <li><a class="nav__link" href="#www">Web</a></li>
-          <li><a class="nav__link" href="#video">Video</a></li>
-          <li><a class="nav__link" href="#tools">Tools</a></li>
+          <li><a class="nav__link is-active" href="index.html" aria-current="page">Home</a></li>
+          <li><a class="nav__link" href="www.html">Web</a></li>
+          <li><a class="nav__link" href="dim.html">DIM</a></li>
+          <li><a class="nav__link" href="extra.html">Tools</a></li>
           <li><a class="nav__link" href="#contact">Contact</a></li>
         </ul>
         <span class="nav__pill" aria-hidden="true"></span>
@@ -68,12 +68,11 @@
 
     <div class="mobile-nav" id="mobile-nav" inert>
       <ul>
-        <li><a class="mobile-nav__link" href="#home">Home</a></li>
-        <li><a class="mobile-nav__link" href="#about">About</a></li>
-        <li><a class="mobile-nav__link" href="#www">Web design</a></li>
-        <li><a class="mobile-nav__link" href="#video">Video editing</a></li>
-        <li><a class="mobile-nav__link" href="#tools">Tools</a></li>
-        <li><a class="mobile-nav__link" href="#contact">Contact</a></li>
+          <li><a class="mobile-nav__link is-active" href="index.html" aria-current="page">Home</a></li>
+          <li><a class="mobile-nav__link" href="www.html">Web design</a></li>
+          <li><a class="mobile-nav__link" href="dim.html">Video &amp; graphics</a></li>
+          <li><a class="mobile-nav__link" href="extra.html">Tools</a></li>
+          <li><a class="mobile-nav__link" href="#contact">Contact</a></li>
       </ul>
     </div>
   </header>
@@ -98,7 +97,7 @@
         <!-- App-icon tiles: work + contact, all equal. They pop in, then float gently forever. -->
         <ul class="tiles" aria-label="Explore and contact">
           <li class="tile pop" style="--i:3">
-            <a class="tile__link" href="#www">
+            <a class="tile__link" href="www.html">
               <span class="tile__icon tile__icon--web" aria-hidden="true">
                 <svg viewBox="0 0 48 48"><rect x="7" y="10" width="34" height="26" rx="5"/><path d="M7 17h34"/><circle cx="12" cy="13.5" r="1"/><circle cx="16" cy="13.5" r="1"/><path d="M19 25l-4 3 4 3M29 25l4 3-4 3M26 23l-4 10"/></svg>
               </span>
@@ -106,7 +105,7 @@
             </a>
           </li>
           <li class="tile pop" style="--i:4">
-            <a class="tile__link" href="#video">
+            <a class="tile__link" href="dim.html">
               <span class="tile__icon tile__icon--video" aria-hidden="true">
                 <svg viewBox="0 0 48 48"><rect x="7" y="11" width="34" height="26" rx="6"/><path d="M21 19v10l8.5-5z"/></svg>
               </span>
@@ -153,395 +152,35 @@
     </section>
 
     <!-- =====================================================
-         #www — WEB DESIGN (infinite, draggable reel)
-         Each card holds the full case study; clicking opens it.
-         JS clones the cards (as inert copies) to make the loop seamless.
+         #work — WORK INDEX: one row per page
          ===================================================== -->
-    <section id="www" class="work" aria-labelledby="www-title">
-      <div class="container work__head">
-        <h2 id="www-title" class="section-title">Web design</h2>
-        <p class="section-lead">Drag the reel to browse. Select a project to see the full story.</p>
-      </div>
-
-      <div class="reel" aria-roledescription="carousel" aria-label="Web design projects">
-        <div class="reel__track">
-
-          <!-- PROJECT CARD — copy this <article> to add a project.
-               .work-card__details holds everything shown in the detail view (1–3 images). -->
-          <article class="work-card">
-            <button class="work-card__open" type="button" aria-haspopup="dialog">
-              <span class="work-card__media">
-                <img src="img/muzeum-1.jpg" alt="Muzeum Věků Praha homepage: a dark museum hall behind the headline “Prozkoumejte příběhy světových civilizací”" loading="lazy" width="800" height="500">
-              </span>
-              <span class="work-card__row">
-                <span class="work-card__title">Muzeum Věků Praha</span>
-                <span class="work-card__type">Website · 2026</span>
-              </span>
-            </button>
-            <div class="work-card__details" hidden>
-              <h3>Muzeum Věků Praha</h3>
-              <p class="pd-type">Website · 2026</p>
-              <p>
-                A website for a fictional Prague museum of world civilisations. Visitors can browse
-                the exhibitions, see what is opening next and book tickets online. The exhibitions
-                load from a CSV file, the gallery is a self-playing carousel, and a countdown runs
-                to the next opening. The booking form is checked in the browser first, then
-                validated and saved by PHP.
-              </p>
-              <dl>
-                <div><dt>Role</dt><dd>Solo — design &amp; development</dd></div>
-                <div><dt>Tech</dt><dd>HTML · CSS · JS · PHP</dd></div>
-              </dl>
-              <div class="pd-images">
-                <img src="img/muzeum-2.jpg" alt="Exhibitions section: cards for Ancient Egypt, Greek sculpture and medieval weapons" loading="lazy" width="800" height="500">
-                <img src="img/muzeum-3.jpg" alt="Featured exhibitions carousel showing a suit of medieval armour" loading="lazy" width="800" height="500">
-                <img src="img/muzeum-4.jpg" alt="Ticket booking form with date, time, number of people and ticket type" loading="lazy" width="800" height="500">
-              </div>
-            </div>
-          </article>
-
-          <article class="work-card">
-            <button class="work-card__open" type="button" aria-haspopup="dialog">
-              <span class="work-card__media">
-                <img src="img/web-1a.svg" alt="Placeholder: Café Kompas homepage" loading="lazy" width="1600" height="1000">
-              </span>
-              <span class="work-card__row">
-                <span class="work-card__title">Café Kompas</span>
-                <span class="work-card__type">Website · 2025</span>
-              </span>
-            </button>
-            <div class="work-card__details" hidden>
-              <h3>Café Kompas</h3>
-              <p class="pd-type">Website · 2025</p>
-              <p>
-                A responsive website for a small local café. The goal was to make the menu and
-                opening hours effortless to find on a phone. I built a mobile-first layout with
-                CSS Grid and a lightweight PHP contact form. The site loads in under a second on 4G.
-              </p>
-              <dl>
-                <div><dt>Role</dt><dd>Design &amp; front-end development</dd></div>
-                <div><dt>Tech</dt><dd>HTML · CSS · JS · PHP</dd></div>
-              </dl>
-              <a href="https://example.com" target="_blank" rel="noopener">View live site<span class="visually-hidden"> (opens in a new tab)</span></a>
-              <div class="pd-images">
-                <img src="img/web-1a.svg" alt="Placeholder: Café Kompas homepage" loading="lazy" width="1600" height="1000">
-                <img src="img/web-1b.svg" alt="Placeholder: Café Kompas menu page" loading="lazy" width="1600" height="1000">
-              </div>
-            </div>
-          </article>
-
-          <article class="work-card">
-            <button class="work-card__open" type="button" aria-haspopup="dialog">
-              <span class="work-card__media">
-                <img src="img/web-2a.svg" alt="Placeholder: Study Planner dashboard" loading="lazy" width="1600" height="1000">
-              </span>
-              <span class="work-card__row">
-                <span class="work-card__title">Study Planner</span>
-                <span class="work-card__type">Web app · 2025</span>
-              </span>
-            </button>
-            <div class="work-card__details" hidden>
-              <h3>Study Planner</h3>
-              <p class="pd-type">Web app · 2025</p>
-              <p>
-                A focused web app that helps students plan homework and exams. Tasks are saved in
-                the browser, so it works instantly without an account. I paid close attention to
-                keyboard accessibility and clear empty states. Classmates relied on it through the
-                whole exam period.
-              </p>
-              <dl>
-                <div><dt>Role</dt><dd>Solo — UX, code &amp; testing</dd></div>
-                <div><dt>Tech</dt><dd>HTML · CSS · JS</dd></div>
-              </dl>
-              <a href="https://example.com" target="_blank" rel="noopener">View live site<span class="visually-hidden"> (opens in a new tab)</span></a>
-              <div class="pd-images">
-                <img src="img/web-2a.svg" alt="Placeholder: Study Planner dashboard" loading="lazy" width="1600" height="1000">
-              </div>
-            </div>
-          </article>
-
-          <article class="work-card">
-            <button class="work-card__open" type="button" aria-haspopup="dialog">
-              <span class="work-card__media">
-                <img src="img/web-3a.svg" alt="Placeholder: Open Day event homepage" loading="lazy" width="1600" height="1000">
-              </span>
-              <span class="work-card__row">
-                <span class="work-card__title">School Open Day</span>
-                <span class="work-card__type">Event platform · 2024</span>
-              </span>
-            </button>
-            <div class="work-card__details" hidden>
-              <h3>School Open Day</h3>
-              <p class="pd-type">Event platform · 2024</p>
-              <p>
-                An event site with online registration for my school's open day. Visitors choose a
-                time slot and receive a confirmation email. I built the PHP back-end with a MySQL
-                database and a simple admin overview. More than 300 people registered through it.
-              </p>
-              <dl>
-                <div><dt>Role</dt><dd>Back-end &amp; form logic (team of 3)</dd></div>
-                <div><dt>Tech</dt><dd>HTML · CSS · PHP</dd></div>
-              </dl>
-              <a href="https://example.com" target="_blank" rel="noopener">View live site<span class="visually-hidden"> (opens in a new tab)</span></a>
-              <div class="pd-images">
-                <img src="img/web-3a.svg" alt="Placeholder: Open Day event homepage" loading="lazy" width="1600" height="1000">
-                <img src="img/web-3b.svg" alt="Placeholder: registration form with time slots" loading="lazy" width="1600" height="1000">
-                <img src="img/web-3c.svg" alt="Placeholder: admin table of registrations" loading="lazy" width="1600" height="1000">
-              </div>
-            </div>
-          </article>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- =====================================================
-         #video — VIDEO EDITING (second infinite reel)
-         Same card format as web design; "duration" is the video length.
-         ===================================================== -->
-    <section id="video" class="work" aria-labelledby="video-title">
-      <div class="container work__head">
-        <h2 id="video-title" class="section-title">Video editing</h2>
-        <p class="section-lead">Edits, titles and colour grading. Select a film to see how it was made.</p>
-      </div>
-
-      <div class="reel" aria-roledescription="carousel" aria-label="Video editing projects">
-        <div class="reel__track">
-
-          <article class="work-card work-card--video">
-            <button class="work-card__open" type="button" aria-haspopup="dialog">
-              <span class="work-card__media">
-                <img src="img/design-3a.svg" alt="Placeholder: Sports Day aftermovie title card" loading="lazy" width="1600" height="900">
-                <span class="play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 7v10l8-5z"/></svg></span>
-                <span class="duration">1:48</span>
-              </span>
-              <span class="work-card__row">
-                <span class="work-card__title">Sports Day — Aftermovie</span>
-                <span class="work-card__type">Aftermovie · 2025</span>
-              </span>
-            </button>
-            <div class="work-card__details" hidden>
-              <h3>Sports Day — Aftermovie</h3>
-              <p class="pd-type">Aftermovie · 2025 · 1:48</p>
-              <p>
-                A fast, energetic recap of the school sports day. I cut around three hours of footage from four cameras down to under two minutes, timed the edit to the music and graded every shot to one warm, consistent look.
-              </p>
-              <dl>
-                <div><dt>Role</dt><dd>Editing, titles &amp; colour grading</dd></div>
-                <div><dt>Tools</dt><dd>Premiere Pro, After Effects</dd></div>
-              </dl>
-              <a href="https://example.com" target="_blank" rel="noopener">Watch the video<span class="visually-hidden"> (opens in a new tab)</span></a>
-              <div class="pd-images">
-                <img src="img/design-3a.svg" alt="Placeholder: aftermovie title card" loading="lazy" width="1600" height="900">
-                <img src="img/design-3b.svg" alt="Placeholder: colour grading before and after" loading="lazy" width="1600" height="900">
-                <img src="img/design-3c.svg" alt="Placeholder: editing timeline in Premiere Pro" loading="lazy" width="1600" height="900">
-              </div>
-            </div>
-          </article>
-
-          <article class="work-card work-card--video">
-            <button class="work-card__open" type="button" aria-haspopup="dialog">
-              <span class="work-card__media">
-                <img src="img/video-2a.svg" alt="Placeholder: Open Day promo video still" loading="lazy" width="1600" height="900">
-                <span class="play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 7v10l8-5z"/></svg></span>
-                <span class="duration">0:45</span>
-              </span>
-              <span class="work-card__row">
-                <span class="work-card__title">Open Day — Promo</span>
-                <span class="work-card__type">Promo · 2024</span>
-              </span>
-            </button>
-            <div class="work-card__details" hidden>
-              <h3>Open Day — Promo</h3>
-              <p class="pd-type">Promo · 2024 · 0:45</p>
-              <p>
-                A short promotional video inviting future students to the school open day. I planned the shots, edited a tight 45-second cut for social media and designed animated titles that match the event website.
-              </p>
-              <dl>
-                <div><dt>Role</dt><dd>Planning, editing &amp; motion titles</dd></div>
-                <div><dt>Tools</dt><dd>Premiere Pro, After Effects</dd></div>
-              </dl>
-              <a href="https://example.com" target="_blank" rel="noopener">Watch the video<span class="visually-hidden"> (opens in a new tab)</span></a>
-              <div class="pd-images">
-                <img src="img/video-2a.svg" alt="Placeholder: Open Day promo video still" loading="lazy" width="1600" height="900">
-              </div>
-            </div>
-          </article>
-
-          <article class="work-card work-card--video">
-            <button class="work-card__open" type="button" aria-haspopup="dialog">
-              <span class="work-card__media">
-                <img src="img/video-3a.svg" alt="Placeholder: Jazz Night teaser still" loading="lazy" width="1600" height="900">
-                <span class="play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 7v10l8-5z"/></svg></span>
-                <span class="duration">0:30</span>
-              </span>
-              <span class="work-card__row">
-                <span class="work-card__title">Jazz Night — Teaser</span>
-                <span class="work-card__type">Teaser · 2025</span>
-              </span>
-            </button>
-            <div class="work-card__details" hidden>
-              <h3>Jazz Night — Teaser</h3>
-              <p class="pd-type">Teaser · 2025 · 0:30</p>
-              <p>
-                A moody 30-second teaser for the school concert evening, built around the poster series. Slow pushes, film grain and type that moves to the rhythm of the music.
-              </p>
-              <dl>
-                <div><dt>Role</dt><dd>Editing, sound sync &amp; grading</dd></div>
-                <div><dt>Tools</dt><dd>Premiere Pro, After Effects</dd></div>
-              </dl>
-              <a href="https://example.com" target="_blank" rel="noopener">Watch the video<span class="visually-hidden"> (opens in a new tab)</span></a>
-              <div class="pd-images">
-                <img src="img/video-3a.svg" alt="Placeholder: Jazz Night teaser still" loading="lazy" width="1600" height="900">
-                <img src="img/design-1a.svg" alt="Placeholder: Jazz Night poster the teaser is based on" loading="lazy" width="900" height="1200">
-              </div>
-            </div>
-          </article>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- =====================================================
-         #tools — TOOLS I USE
-         Apple-style bento grid; each card runs a tiny live demo of the tool.
-         (The earlier dock version is saved in versions/tools-dock.)
-         ===================================================== -->
-    <section id="tools" class="tools" aria-labelledby="tools-title">
+    <section id="work" class="work-index" aria-labelledby="work-title">
       <div class="container">
-        <div class="work__head">
-          <h2 id="tools-title" class="section-title">Tools</h2>
-          <p class="section-lead">What I edit, animate, design and build with every day.</p>
-        </div>
-
-        <!-- Bento grid: every card carries a tiny live demo of what the tool does.
-             Demos are decorative (aria-hidden) except the JavaScript button, which really works. -->
-        <ul class="bento" role="list">
-          <!-- Premiere Pro: a timeline with a playhead sweeping across -->
-          <li class="bento__card bento__card--pr" data-tool="pr">
-            <div class="bento__visual" aria-hidden="true">
-              <div class="tl">
-                <div class="tl__ruler"><span>00:00</span><span>00:15</span><span>00:30</span><span>00:45</span></div>
-                <div class="tl__track"><b>V2</b><i style="--x:16%;--w:22%"></i><i style="--x:66%;--w:16%"></i></div>
-                <div class="tl__track"><b>V1</b><i style="--x:0%;--w:34%"></i><i style="--x:35%;--w:27%"></i><i style="--x:63%;--w:37%"></i></div>
-                <div class="tl__track tl__track--audio"><b>A1</b><i style="--x:0%;--w:100%"></i></div>
-                <span class="tl__head"></span>
-              </div>
-            </div>
-            <div class="bento__info">
-              <span class="app-icon app-icon--pr" aria-hidden="true">Pr</span>
-              <div>
-                <h3 class="bento__name">Premiere Pro</h3>
-                <p class="bento__use">Cutting aftermovies, promos and teasers.</p>
-              </div>
-            </div>
+        <h2 id="work-title" class="section-title">Selected work</h2>
+        <ul class="index-list" role="list">
+          <li>
+            <a class="index-row" href="www.html">
+              <span class="index-row__num" aria-hidden="true">01</span>
+              <span class="index-row__name">Web design</span>
+              <span class="index-row__meta">Websites &amp; web apps · WWW</span>
+              <span class="arrow" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
+            </a>
           </li>
-
-          <!-- After Effects: an ease curve in the graph editor, a dot riding it -->
-          <li class="bento__card bento__card--ae" data-tool="ae">
-            <div class="bento__visual" aria-hidden="true">
-              <svg class="graph" viewBox="0 0 200 120" preserveAspectRatio="xMidYMid meet">
-                <path class="graph__grid" d="M0 30H200M0 60H200M0 90H200M50 0V120M100 0V120M150 0V120"/>
-                <path class="graph__handle" d="M14 104H92M186 16H104"/>
-                <circle class="graph__knob" cx="92" cy="104" r="3"/>
-                <circle class="graph__knob" cx="104" cy="16" r="3"/>
-                <path class="graph__curve" d="M14 104 C 92 104, 104 16, 186 16"/>
-                <rect class="graph__key" x="9" y="99" width="10" height="10" transform="rotate(45 14 104)"/>
-                <rect class="graph__key" x="181" y="11" width="10" height="10" transform="rotate(45 186 16)"/>
-                <circle class="graph__dot" r="5">
-                  <animateMotion dur="3.2s" repeatCount="indefinite" path="M14 104 C 92 104, 104 16, 186 16"
-                                 keyPoints="0;1;1;0;0" keyTimes="0;.4;.5;.9;1" calcMode="spline"
-                                 keySplines=".7 0 .3 1;0 0 1 1;.7 0 .3 1;0 0 1 1"/>
-                </circle>
-              </svg>
-            </div>
-            <div class="bento__info">
-              <span class="app-icon app-icon--ae" aria-hidden="true">Ae</span>
-              <div>
-                <h3 class="bento__name">After Effects</h3>
-                <p class="bento__use">Motion, titles and smooth easing.</p>
-              </div>
-            </div>
+          <li>
+            <a class="index-row" href="dim.html">
+              <span class="index-row__num" aria-hidden="true">02</span>
+              <span class="index-row__name">Video &amp; graphics</span>
+              <span class="index-row__meta">Edits, titles &amp; design · DIM</span>
+              <span class="arrow" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
+            </a>
           </li>
-
-          <!-- Figma: a frame with a live cursor resizing a shape -->
-          <li class="bento__card bento__card--figma" data-tool="figma">
-            <div class="bento__visual" aria-hidden="true">
-              <div class="canvas">
-                <span class="canvas__label">Desktop — Home</span>
-                <div class="canvas__frame">
-                  <span class="canvas__bar"></span>
-                  <span class="canvas__line"></span>
-                  <span class="canvas__line canvas__line--short"></span>
-                  <span class="canvas__shape"><i></i><i></i><i></i><i></i></span>
-                  <span class="cursor"><svg viewBox="0 0 16 16"><path d="M2 1l11 6-5 1.5L5.5 14z"/></svg><em>Vajny</em></span>
-                </div>
-              </div>
-            </div>
-            <div class="bento__info">
-              <span class="app-icon app-icon--figma" aria-hidden="true"><svg viewBox="0 0 38 57"><path fill="#f24e1e" d="M19 0H9.5a9.5 9.5 0 0 0 0 19H19z"/><path fill="#ff7262" d="M19 0h9.5a9.5 9.5 0 0 1 0 19H19z"/><path fill="#a259ff" d="M19 19H9.5a9.5 9.5 0 0 0 0 19H19z"/><circle fill="#1abcfe" cx="28.5" cy="28.5" r="9.5"/><path fill="#0acf83" d="M9.5 38H19v9.5A9.5 9.5 0 1 1 9.5 38z"/></svg></span>
-              <div>
-                <h3 class="bento__name">Figma</h3>
-                <p class="bento__use">Layouts and prototypes before any code.</p>
-              </div>
-            </div>
-          </li>
-
-          <!-- HTML: markup typing itself out -->
-          <li class="bento__card bento__card--html" data-tool="html">
-            <div class="bento__visual" aria-hidden="true">
-              <div class="code">
-                <span class="code__line" style="--l:0"><span class="c-t">&lt;section</span> <span class="c-a">id</span>=<span class="c-s">"home"</span><span class="c-t">&gt;</span></span>
-                <span class="code__line code__line--in" style="--l:1"><span class="c-t">&lt;h1&gt;</span>Vajny<span class="c-t">&lt;/h1&gt;</span></span>
-                <span class="code__line code__line--in" style="--l:2"><span class="c-t">&lt;p&gt;</span>Front-end dev<span class="c-t">&lt;/p&gt;</span></span>
-                <span class="code__line" style="--l:3"><span class="c-t">&lt;/section&gt;</span><span class="caret"></span></span>
-              </div>
-            </div>
-            <div class="bento__info">
-              <span class="app-icon app-icon--html" aria-hidden="true"><span>HTML</span></span>
-              <div>
-                <h3 class="bento__name">HTML</h3>
-                <p class="bento__use">Semantic, accessible structure.</p>
-              </div>
-            </div>
-          </li>
-
-          <!-- CSS: one box restyled by the rule beside it -->
-          <li class="bento__card bento__card--css" data-tool="css">
-            <div class="bento__visual" aria-hidden="true">
-              <div class="morph">
-                <span class="morph__box"></span>
-                <div class="code code--small">
-                  <span class="code__line"><span class="c-s">.icon</span> {</span>
-                  <span class="code__line code__line--in"><span class="c-a">radius</span>: <span class="morph__val"></span>;</span>
-                  <span class="code__line">}</span>
-                </div>
-              </div>
-            </div>
-            <div class="bento__info">
-              <span class="app-icon app-icon--css" aria-hidden="true"><span>CSS</span></span>
-              <div>
-                <h3 class="bento__name">CSS</h3>
-                <p class="bento__use">Layout, type and the small details.</p>
-              </div>
-            </div>
-          </li>
-
-          <!-- JavaScript: a real button, so the card proves itself -->
-          <li class="bento__card bento__card--js" data-tool="js">
-            <div class="bento__visual">
-              <div class="clicker">
-                <button class="clicker__btn" type="button" data-clicker>Click me</button>
-                <p class="clicker__out" aria-live="polite"><span class="c-a">count</span> = <strong data-count>0</strong></p>
-              </div>
-            </div>
-            <div class="bento__info">
-              <span class="app-icon app-icon--js" aria-hidden="true"><span>JS</span></span>
-              <div>
-                <h3 class="bento__name">JavaScript</h3>
-                <p class="bento__use">Interaction that makes pages feel alive.</p>
-              </div>
-            </div>
+          <li>
+            <a class="index-row" href="extra.html">
+              <span class="index-row__num" aria-hidden="true">03</span>
+              <span class="index-row__name">Tools</span>
+              <span class="index-row__meta">What I build with · Extra</span>
+              <span class="arrow" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
+            </a>
           </li>
         </ul>
       </div>
@@ -571,6 +210,10 @@
           <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6" fill="currentColor"/></svg>
           @vajny__<span class="visually-hidden"> on Instagram (opens in a new tab)</span>
         </a>
+        <a class="btn btn--glass" href="https://github.com/VitVajnar" target="_blank" rel="noopener">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 19c-4 1.4-4-2-6-2.5M15 21v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1-.3-3.4 1.3a11.7 11.7 0 0 0-6.2 0C6.6 2.8 5.6 3.1 5.6 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4.2 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg>
+          GitHub<span class="visually-hidden"> (opens in a new tab)</span>
+        </a>
       </div>
     </div>
 
@@ -581,7 +224,7 @@
   </footer>
 
   <!-- Back to top — ring shows scroll progress -->
-  <a class="to-top" href="#home" aria-label="Back to top">
+  <a class="to-top" href="#top" aria-label="Back to top">
     <svg class="to-top__ring" viewBox="0 0 56 56" aria-hidden="true" focusable="false">
       <circle class="to-top__track" cx="28" cy="28" r="26"/>
       <circle class="to-top__progress" cx="28" cy="28" r="26"/>
@@ -592,16 +235,6 @@
   </a>
 
   <div class="toast" role="status" aria-live="polite"></div>
-
-  <!-- PROJECT DETAIL — filled from the clicked card's .work-card__details -->
-  <dialog class="project-dialog" aria-labelledby="pd-title">
-    <div class="project-dialog__panel">
-      <button class="pd-close" type="button" aria-label="Close project">
-        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6 6 18"/></svg>
-      </button>
-      <div class="pd-body"></div>
-    </div>
-  </dialog>
 
 </body>
 </html>

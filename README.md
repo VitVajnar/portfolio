@@ -11,10 +11,13 @@ Je to statický web napsaný ručně v HTML, CSS a čistém JavaScriptu, bez fra
 Design je tmavý a minimalistický (námořnická modř, jedno písmo Inter Tight, jemné skleněné efekty).
 Inspiroval jsem se aplikacemi od Applu.
 
-Úvodní sekce obsahuje krátké představení a čtyři „dlaždice“ jako ikony aplikací: web, video, e-mail a Instagram.
-Projekty jsou v nekonečných posuvných pásech („reelech“), které jdou táhnout myší i prstem.
-Po kliknutí na kartu se otevře detail s popisem, mojí rolí, technologiemi, odkazem a 1–3 náhledy.
-Sekce Tools ukazuje nástroje, které používám (Premiere Pro, After Effects, Figma, HTML, CSS, JS), formou malých živých ukázek.
+Web má čtyři stránky se společnou navigací. Aktuální stránka je v menu zvýrazněná (`aria-current="page"`).
+- **Domů (`index.html`):** krátké představení (jméno, obor, ročník), čtyři „dlaždice“ jako ikony aplikací (web, video, e-mail, Instagram), text o mně a rozcestník na ostatní stránky.
+- **WWW projekty (`www.html`):** webové projekty v nekonečném posuvném pásu („reelu“), který jde táhnout myší i prstem. Po kliknutí na kartu se otevře detail s popisem, mojí rolí, technologiemi, odkazem a 1–3 náhledy.
+- **DIM (`dim.html`):** video a grafická tvorba ve stejném formátu, u každé práce je formát, nástroje a rok.
+- **Volitelná kategorie (`extra.html`):** nástroje, které používám (Premiere Pro, After Effects, Figma, HTML, CSS, JS), formou malých živých ukázek.
+
+Kontakty (e-mail, Instagram, GitHub) jsou v patičce každé stránky. Tlačítko „Back to top“ ukazuje, kolik ze stránky už je odscrollováno.
 
 Web je responzivní (mobil, tablet, PC) a ovládá se i klávesnicí.
 Respektuje nastavení `prefers-reduced-motion`.
@@ -24,7 +27,10 @@ Návštěvnost se měří vlastní funkcí na Cloudflare (viz níže) a navíc p
 
 ```
 portfolio/
-├─ index.html              hlavní stránka (všechny sekce)
+├─ index.html              domovská stránka (představení, o mně, rozcestník)
+├─ www.html                webové projekty (WWW)
+├─ dim.html                video a grafika (DIM)
+├─ extra.html              volitelná kategorie: nástroje
 ├─ css/style.css           jediný styl
 ├─ js/main.js              jediný skript (animace, reely, dialog, měření návštěv)
 ├─ img/                    náhledy projektů
@@ -101,11 +107,11 @@ doplň po nasazení: zkopíruj sem 5 řádků z /api/visits?limit=5
 
 ## Známé limity a TODO
 
-- [ ] **Víc stránek:** zadání chce minimálně 3 stránky (`index.html`, `www.html`, `dim.html`, `extra.html`), web je zatím jednostránkový.
-- [ ] **Sekce DIM:** doplnit grafickou tvorbu (plakáty, loga, retuše) s popisem, formátem, nástrojem, rokem a náhledy.
+- [x] **Víc stránek:** web má 4 stránky (`index.html`, `www.html`, `dim.html`, `extra.html`).
+- [ ] **Stránka DIM:** doplnit grafickou tvorbu (plakáty, loga, retuše) s popisem, formátem, nástrojem, rokem a náhledy.
 - [ ] **Projekty:** nahradit ukázkové projekty (Café Kompas, Study Planner, School Open Day a videa) skutečnými a opravit odkazy `example.com`.
 - [ ] **Muzeum Věků Praha:** doplnit odkaz na živou verzi.
-- [ ] **Kontakty:** přidat odkaz na GitHub nebo LinkedIn.
+- [x] **Kontakty:** odkaz na GitHub je v patičce. LinkedIn zatím ne.
 - [ ] **Favicon:** přidat.
 - [ ] **Jazyk:** web je v angličtině (`lang="en"`). Zvážit českou verzi.
 - [ ] **Google Fonts:** písmo se načítá z Googlu. Pro lepší GDPR je možné ho hostovat přímo na webu.

@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Web design — Vajny</title>
+  <meta name="description" content="Websites and web apps by Vajny, an IT student from Prague: project descriptions, roles, technologies (HTML, CSS, JS, PHP) and screenshots.">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#050a16">
+
+  <meta property="og:title" content="Web design — Vajny">
+  <meta property="og:description" content="Websites and web apps by Vajny, an IT student from Prague: project descriptions, roles, technologies (HTML, CSS, JS, PHP) and screenshots.">
+  <meta property="og:type" content="website">
+
+  <!-- One typeface: Inter Tight -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300..700&display=swap">
+
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/main.js" defer></script>
+</head>
+<body id="top">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- Page atmosphere: drifting navy lights, an edge vignette and fine grain.
+       Purely decorative. -->
+  <div class="atmosphere" aria-hidden="true">
+    <span class="orb orb--1"></span>
+    <span class="orb orb--2"></span>
+    <span class="orb orb--3"></span>
+    <span class="orb orb--4"></span>
+    <span class="atmosphere__vignette"></span>
+  </div>
+
+  <!-- =====================================================
+       HEADER — floating frosted-glass navigation (same on every page;
+       the current page is marked with aria-current="page")
+       ===================================================== -->
+  <header class="site-header">
+    <div class="nav-shell">
+      <a class="brand" href="index.html" aria-label="Vajny — home">
+        <span class="brand__mark" aria-hidden="true">V</span>
+        <span class="brand__name">Vajny</span>
+      </a>
+
+      <nav class="nav" aria-label="Primary">
+        <ul class="nav__list">
+          <li><a class="nav__link" href="index.html">Home</a></li>
+          <li><a class="nav__link is-active" href="www.html" aria-current="page">Web</a></li>
+          <li><a class="nav__link" href="dim.html">DIM</a></li>
+          <li><a class="nav__link" href="extra.html">Tools</a></li>
+          <li><a class="nav__link" href="#contact">Contact</a></li>
+        </ul>
+        <span class="nav__pill" aria-hidden="true"></span>
+      </nav>
+
+      <button class="menu-btn" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Open menu">
+        <span class="menu-btn__bar" aria-hidden="true"></span>
+        <span class="menu-btn__bar" aria-hidden="true"></span>
+      </button>
+    </div>
+
+    <div class="mobile-nav" id="mobile-nav" inert>
+      <ul>
+          <li><a class="mobile-nav__link" href="index.html">Home</a></li>
+          <li><a class="mobile-nav__link is-active" href="www.html" aria-current="page">Web design</a></li>
+          <li><a class="mobile-nav__link" href="dim.html">Video &amp; graphics</a></li>
+          <li><a class="mobile-nav__link" href="extra.html">Tools</a></li>
+          <li><a class="mobile-nav__link" href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- =====================================================
+         #www — WEB DESIGN (infinite, draggable reel)
+         Each card holds the full case study; clicking opens it.
+         JS clones the cards (as inert copies) to make the loop seamless.
+         ===================================================== -->
+    <section id="www" class="work" aria-labelledby="www-title">
+      <div class="container work__head">
+        <h1 id="www-title" class="section-title">Web design</h1>
+        <p class="section-lead">Websites from my WWW classes and beyond. Drag the reel to browse, select a project for the full story.</p>
+      </div>
+
+      <div class="reel" aria-roledescription="carousel" aria-label="Web design projects">
+        <div class="reel__track">
+
+          <!-- PROJECT CARD — copy this <article> to add a project.
+               .work-card__details holds everything shown in the detail view (1–3 images). -->
+          <article class="work-card">
+            <button class="work-card__open" type="button" aria-haspopup="dialog">
+              <span class="work-card__media">
+                <img src="img/muzeum-1.jpg" alt="Muzeum Věků Praha homepage: a dark museum hall behind the headline “Prozkoumejte příběhy světových civilizací”" loading="lazy" width="800" height="500">
+              </span>
+              <span class="work-card__row">
+                <span class="work-card__title">Muzeum Věků Praha</span>
+                <span class="work-card__type">Website · 2026</span>
+              </span>
+            </button>
+            <div class="work-card__details" hidden>
+              <h3>Muzeum Věků Praha</h3>
+              <p class="pd-type">Website · 2026</p>
+              <p>
+                A website for a fictional Prague museum of world civilisations. Visitors can browse
+                the exhibitions, see what is opening next and book tickets online. The exhibitions
+                load from a CSV file, the gallery is a self-playing carousel, and a countdown runs
+                to the next opening. The booking form is checked in the browser first, then
+                validated and saved by PHP.
+              </p>
+              <dl>
+                <div><dt>Role</dt><dd>Solo — design &amp; development</dd></div>
+                <div><dt>Tech</dt><dd>HTML · CSS · JS · PHP</dd></div>
+              </dl>
+              <div class="pd-images">
+                <img src="img/muzeum-2.jpg" alt="Exhibitions section: cards for Ancient Egypt, Greek sculpture and medieval weapons" loading="lazy" width="800" height="500">
+                <img src="img/muzeum-3.jpg" alt="Featured exhibitions carousel showing a suit of medieval armour" loading="lazy" width="800" height="500">
+                <img src="img/muzeum-4.jpg" alt="Ticket booking form with date, time, number of people and ticket type" loading="lazy" width="800" height="500">
+              </div>
+            </div>
+          </article>
+
+          <article class="work-card">
+            <button class="work-card__open" type="button" aria-haspopup="dialog">
+              <span class="work-card__media">
+                <img src="img/web-1a.svg" alt="Placeholder: Café Kompas homepage" loading="lazy" width="1600" height="1000">
+              </span>
+              <span class="work-card__row">
+                <span class="work-card__title">Café Kompas</span>
+                <span class="work-card__type">Website · 2025</span>
+              </span>
+            </button>
+            <div class="work-card__details" hidden>
+              <h3>Café Kompas</h3>
+              <p class="pd-type">Website · 2025</p>
+              <p>
+                A responsive website for a small local café. The goal was to make the menu and
+                opening hours effortless to find on a phone. I built a mobile-first layout with
+                CSS Grid and a lightweight PHP contact form. The site loads in under a second on 4G.
+              </p>
+              <dl>
+                <div><dt>Role</dt><dd>Design &amp; front-end development</dd></div>
+                <div><dt>Tech</dt><dd>HTML · CSS · JS · PHP</dd></div>
+              </dl>
+              <a href="https://example.com" target="_blank" rel="noopener">View live site<span class="visually-hidden"> (opens in a new tab)</span></a>
+              <div class="pd-images">
+                <img src="img/web-1a.svg" alt="Placeholder: Café Kompas homepage" loading="lazy" width="1600" height="1000">
+                <img src="img/web-1b.svg" alt="Placeholder: Café Kompas menu page" loading="lazy" width="1600" height="1000">
+              </div>
+            </div>
+          </article>
+
+          <article class="work-card">
+            <button class="work-card__open" type="button" aria-haspopup="dialog">
+              <span class="work-card__media">
+                <img src="img/web-2a.svg" alt="Placeholder: Study Planner dashboard" loading="lazy" width="1600" height="1000">
+              </span>
+              <span class="work-card__row">
+                <span class="work-card__title">Study Planner</span>
+                <span class="work-card__type">Web app · 2025</span>
+              </span>
+            </button>
+            <div class="work-card__details" hidden>
+              <h3>Study Planner</h3>
+              <p class="pd-type">Web app · 2025</p>
+              <p>
+                A focused web app that helps students plan homework and exams. Tasks are saved in
+                the browser, so it works instantly without an account. I paid close attention to
+                keyboard accessibility and clear empty states. Classmates relied on it through the
+                whole exam period.
+              </p>
+              <dl>
+                <div><dt>Role</dt><dd>Solo — UX, code &amp; testing</dd></div>
+                <div><dt>Tech</dt><dd>HTML · CSS · JS</dd></div>
+              </dl>
+              <a href="https://example.com" target="_blank" rel="noopener">View live site<span class="visually-hidden"> (opens in a new tab)</span></a>
+              <div class="pd-images">
+                <img src="img/web-2a.svg" alt="Placeholder: Study Planner dashboard" loading="lazy" width="1600" height="1000">
+              </div>
+            </div>
+          </article>
+
+          <article class="work-card">
+            <button class="work-card__open" type="button" aria-haspopup="dialog">
+              <span class="work-card__media">
+                <img src="img/web-3a.svg" alt="Placeholder: Open Day event homepage" loading="lazy" width="1600" height="1000">
+              </span>
+              <span class="work-card__row">
+                <span class="work-card__title">School Open Day</span>
+                <span class="work-card__type">Event platform · 2024</span>
+              </span>
+            </button>
+            <div class="work-card__details" hidden>
+              <h3>School Open Day</h3>
+              <p class="pd-type">Event platform · 2024</p>
+              <p>
+                An event site with online registration for my school's open day. Visitors choose a
+                time slot and receive a confirmation email. I built the PHP back-end with a MySQL
+                database and a simple admin overview. More than 300 people registered through it.
+              </p>
+              <dl>
+                <div><dt>Role</dt><dd>Back-end &amp; form logic (team of 3)</dd></div>
+                <div><dt>Tech</dt><dd>HTML · CSS · PHP</dd></div>
+              </dl>
+              <a href="https://example.com" target="_blank" rel="noopener">View live site<span class="visually-hidden"> (opens in a new tab)</span></a>
+              <div class="pd-images">
+                <img src="img/web-3a.svg" alt="Placeholder: Open Day event homepage" loading="lazy" width="1600" height="1000">
+                <img src="img/web-3b.svg" alt="Placeholder: registration form with time slots" loading="lazy" width="1600" height="1000">
+                <img src="img/web-3c.svg" alt="Placeholder: admin table of registrations" loading="lazy" width="1600" height="1000">
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =====================================================
+       FOOTER — contact
+       ===================================================== -->
+  <footer id="contact" class="site-footer" aria-labelledby="contact-title">
+    <div class="footer__glow" aria-hidden="true"></div>
+    <div class="container contact">
+      <h2 id="contact-title" class="contact__title">Let's create something <span class="muted">remarkable.</span></h2>
+
+      <a class="contact__email" href="mailto:vajnarvit@gmail.com">
+        vajnarvit@gmail.com
+        <span class="arrow" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
+      </a>
+
+      <div class="contact__actions">
+        <button class="btn btn--glass" type="button" data-copy="vajnarvit@gmail.com">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="12" height="12" rx="3"/><path d="M5 15V6a3 3 0 0 1 3-3h7"/></svg>
+          Copy email
+        </button>
+        <a class="btn btn--glass" href="https://www.instagram.com/vajny__" target="_blank" rel="noopener">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6" fill="currentColor"/></svg>
+          @vajny__<span class="visually-hidden"> on Instagram (opens in a new tab)</span>
+        </a>
+        <a class="btn btn--glass" href="https://github.com/VitVajnar" target="_blank" rel="noopener">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 19c-4 1.4-4-2-6-2.5M15 21v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1-.3-3.4 1.3a11.7 11.7 0 0 0-6.2 0C6.6 2.8 5.6 3.1 5.6 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4.2 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg>
+          GitHub<span class="visually-hidden"> (opens in a new tab)</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="container footer-bar">
+      <p>&copy; <span id="year">2026</span> Vajny</p>
+      <p>Designed &amp; built by hand</p>
+    </div>
+  </footer>
+
+  <!-- Back to top — ring shows scroll progress -->
+  <a class="to-top" href="#top" aria-label="Back to top">
+    <svg class="to-top__ring" viewBox="0 0 56 56" aria-hidden="true" focusable="false">
+      <circle class="to-top__track" cx="28" cy="28" r="26"/>
+      <circle class="to-top__progress" cx="28" cy="28" r="26"/>
+    </svg>
+    <span class="to-top__arrow" aria-hidden="true">
+      <svg class="icon" viewBox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6"/></svg>
+    </span>
+  </a>
+
+  <div class="toast" role="status" aria-live="polite"></div>
+
+  <!-- PROJECT DETAIL — filled from the clicked card's .work-card__details -->
+  <dialog class="project-dialog" aria-labelledby="pd-title">
+    <div class="project-dialog__panel">
+      <button class="pd-close" type="button" aria-label="Close project">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6 6 18"/></svg>
+      </button>
+      <div class="pd-body"></div>
+    </div>
+  </dialog>
+
+</body>
+</html>
